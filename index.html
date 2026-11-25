@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ru" data-theme="dark" data-style="atmospheric" data-font="sans" data-font-size="md">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Медиум</title>
+    <meta
+      name="description"
+      content="Помощник для настольной игры «Медиум»"
+    />
+    <meta name="theme-color" content="#09090b" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Медиум" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:wght@500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:wght@500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+    <script>
+      (function () {
+        try {
+          var d = document.documentElement;
+          var theme = localStorage.getItem('medium_mansion_vanilla_theme_mode_v1');
+          var style = localStorage.getItem('medium_mansion_vanilla_ui_style_v1');
+          var font = localStorage.getItem('medium_mansion_vanilla_font_family_v1');
+          var size = localStorage.getItem('medium_mansion_vanilla_font_size_v1');
+          var lang = localStorage.getItem('medium_mansion_vanilla_lang_v1');
+          if (theme === 'light' || theme === 'dark') d.dataset.theme = theme;
+          if (style === 'atmospheric' || style === 'minimalist' || style === 'classic') d.dataset.style = style;
+          if (font === 'sans' || font === 'system' || font === 'rounded' || font === 'serif') d.dataset.font = font;
+          if (size === 'sm' || size === 'md' || size === 'lg' || size === 'xl') d.dataset.fontSize = size;
+          if (lang === 'ru' || lang === 'en') d.lang = lang;
+          var bg =
+            d.dataset.theme === 'light'
+              ? d.dataset.style === 'minimalist'
+                ? '#f8fafc'
+                : d.dataset.style === 'classic'
+                ? '#f6eedf'
+                : '#fffbeb'
+              : d.dataset.style === 'classic'
+              ? '#14110f'
+              : '#09090b';
+          d.style.backgroundColor = bg;
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute('content', bg);
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="app"></div>
+    <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+    <script src="./data.js" defer></script>
+    <script src="./secrets-data.js" defer></script>
+    <script src="./dictionaries-data.js" defer></script>
+    <script src="./app.js" defer></script>
+  </body>
+</html>
